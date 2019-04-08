@@ -1,0 +1,58 @@
+{
+  "apiVersion": "vlabs",
+  "properties": {
+    "orchestratorProfile": {
+      "orchestratorType": "Kubernetes",
+      "orchestratorRelease": "1.9",
+      "kubernetesConfig": {
+        "useManagedIdentity": true,
+        "enableRbac": false,
+        "privateCluster": {
+          "enabled": true,
+          "jumpboxProfile": {
+            "name": "jumpbox",
+            "vmSize": "Standard_DS2_v2",
+            "publicKey": "",
+            "username": ""
+          }
+        }
+      }
+    },
+    "masterProfile": {
+      "count": 1,
+      "vmSize": "Standard_DS2_v2"
+    },
+    "agentPoolProfiles": [
+      {
+        "name": "linuxpool",
+        "osType": "Linux",
+        "count": 1,
+        "vmSize": "Standard_DS2_v2",
+        "availabilityProfile": "AvailabilitySet",
+        "osDiskSizeGB": 60
+      },
+      {
+        "name": "windowspool",
+        "osType": "Windows",
+        "count": 1,
+        "vmSize": "Standard_DS2_v2",
+        "availabilityProfile": "AvailabilitySet",
+        "osDiskSizeGB": 150
+      }
+    ],
+    "windowsProfile": {
+      "adminUsername": "",
+      "adminPassword": ""
+    },
+    "linuxProfile": {
+      "adminUsername": "",
+      "ssh": {
+        "publicKeys": [
+          {
+            "keyData": ""
+          }
+        ]
+      }
+    }
+  }
+}
